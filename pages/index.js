@@ -232,7 +232,7 @@ if (!albumPicked) {return (
               <Card.Title>
                 Wallpaper
               </Card.Title>
-              <Button onClick={download(imageSrc, "AlbumfyWallpaper.jpeg", "image/jpeg")}>
+              <Button onClick={() => download(imageSrc, "AlbumfyWallpaper.jpeg", "image/jpeg")}>
                 Download wallpaper
               </Button>
             </Card>
