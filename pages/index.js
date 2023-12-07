@@ -157,7 +157,7 @@ if (!albumPicked) {return (
           </InputGroup>
         </Container>
         <Container>
-          <Row className='mx-2 row row-cols-4 p-2 justify-content-center'>
+          <Row style={{width: '100vh'}} className='mx-2 row row-cols-4 p-2 justify-content-center'>
             {albums?.map( (album, i) => {
               console.log(album);
               return (
@@ -232,7 +232,7 @@ if (!albumPicked) {return (
               <Card.Title>
                 Wallpaper
               </Card.Title>
-              <Button onClick={download(imageSrc, "AlbumfyWallpaper.jpeg", "image/jpeg")}>
+              <Button onClick={() => download(imageSrc, "AlbumfyWallpaper.jpeg", "image/jpeg")}>
                 Download wallpaper
               </Button>
             </Card>
