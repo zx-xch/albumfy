@@ -1,0 +1,158 @@
+
+/*------------------------------------
+- COLOR goodGreen
+------------------------------------*/
+
+$goodgreen_t1: #04C421;
+$goodgreen_t2: #029218;
+$goodgreen_t3: #6afb80;
+$goodgreen_t4: #83fc95;
+$goodgreen_t5: #014c0c;
+$goodgreen_t6: #028316;
+$goodgreen_t7: #03a11b;
+$goodgreen_t8: #001a04;
+$goodgreen_t9: #97fca6;
+
+$goodgreen_shadow: rgba(4, 196, 33, 0.5);
+$goodgreen_text_color_dark_bright: #fff;
+
+
+.alert-goodGreen {
+  color: $goodgreen_t5;
+  background-color: $goodgreen_t9;
+  border-color: $goodgreen_t4;
+}
+
+.alert-goodGreen hr {
+  border-top-color: $goodgreen_t3;
+}
+
+.alert-goodGreen .alert-link {
+  color: $goodgreen_t8;
+}
+
+.badge-goodGreen {
+  color: $goodgreen_text_color_dark_bright;
+  background-color: $goodgreen_t1;
+}
+
+.badge-goodGreen[href]:hover, .badge-goodGreen[href]:focus {
+  color: $goodgreen_text_color_dark_bright;
+  background-color: $goodgreen_t2;
+}
+
+.bg-goodGreen {
+  background-color: $goodgreen_t1 !important;
+}
+
+a.bg-goodGreen:hover, a.bg-goodGreen:focus,
+button.bg-goodGreen:hover,
+button.bg-goodGreen:focus {
+  background-color: $goodgreen_t2 !important;
+}
+
+.border-goodGreen {
+  border-color: $goodgreen_t1 !important;
+}
+
+.btn-goodGreen {
+  color: $goodgreen_text_color_dark_bright;
+  background-color: $goodgreen_t1;
+  border-color: $goodgreen_t1;
+}
+
+.btn-goodGreen:hover {
+  color: $goodgreen_text_color_dark_bright;
+  background-color: $goodgreen_t7;
+  border-color: $goodgreen_t2;
+}
+
+.btn-goodGreen:focus, .btn-goodGreen.focus {
+  box-shadow: 0 0 0 0.2rem $goodgreen_shadow;
+}
+
+.btn-goodGreen.disabled, .btn-goodGreen:disabled {
+  color: $goodgreen_text_color_dark_bright;
+  background-color: $goodgreen_t1;
+  border-color: $goodgreen_t1;
+}
+
+.btn-goodGreen:not(:disabled):not(.disabled):active, .btn-goodGreen:not(:disabled):not(.disabled).active, .show > .btn-goodGreen.dropdown-toggle {
+  color: $goodgreen_text_color_dark_bright;
+  background-color: $goodgreen_t2;
+  border-color: $goodgreen_t6;
+}
+
+.btn-goodGreen:not(:disabled):not(.disabled):active:focus, .btn-goodGreen:not(:disabled):not(.disabled).active:focus, .show > .btn-goodGreen.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem $goodgreen_shadow;
+}
+
+.btn-outline-goodGreen {
+  color: $goodgreen_t1;
+  background-color: transparent;
+  border-color: $goodgreen_t1;
+}
+
+.btn-outline-goodGreen:hover {
+  color: $goodgreen_text_color_dark_bright;
+  background-color: $goodgreen_t1;
+  border-color: $goodgreen_t1;
+}
+
+.btn-outline-goodGreen:focus, .btn-outline-goodGreen.focus {
+  box-shadow: 0 0 0 0.2rem $goodgreen_shadow;
+}
+
+.btn-outline-goodGreen.disabled, .btn-outline-goodGreen:disabled {
+  color: $goodgreen_t1;
+  background-color: transparent;
+}
+
+.btn-outline-goodGreen:not(:disabled):not(.disabled):active, .btn-outline-goodGreen:not(:disabled):not(.disabled).active, .show > .btn-outline-goodGreen.dropdown-toggle {
+  color: $goodgreen_text_color_dark_bright;
+  background-color: $goodgreen_t1;
+  border-color: $goodgreen_t1;
+}
+
+.btn-outline-goodGreen:not(:disabled):not(.disabled):active:focus, .btn-outline-goodGreen:not(:disabled):not(.disabled).active:focus, .show > .btn-outline-goodGreen.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem $goodgreen_shadow;
+}
+
+.list-group-item-goodGreen {
+  color: $goodgreen_t5;
+  background-color: $goodgreen_t4;
+}
+
+.list-group-item-goodGreen.list-group-item-action:hover, .list-group-item-goodGreen.list-group-item-action:focus {
+  color: $goodgreen_t5;
+  background-color: $goodgreen_t3;
+}
+
+.list-group-item-goodGreen.list-group-item-action.active {
+  color: $goodgreen_text_color_dark_bright;
+  background-color: $goodgreen_t5;
+  border-color: $goodgreen_t5;
+}
+
+.table-goodGreen,
+.table-goodGreen > th,
+.table-goodGreen > td {
+  background-color: $goodgreen_t4;
+}
+
+.table-hover .table-goodGreen:hover {
+  background-color: $goodgreen_t3;
+}
+
+.table-hover .table-goodGreen:hover > td,
+.table-hover .table-goodGreen:hover > th {
+  background-color: $goodgreen_t3;
+}
+
+.text-goodGreen {
+  color: $goodgreen_t1 !important;
+}
+
+a.text-goodGreen:hover, a.text-goodGreen:focus {
+  color: $goodgreen_t2 !important;
+}
