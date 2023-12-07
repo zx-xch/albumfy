@@ -137,7 +137,7 @@ if (!albumPicked) {return (
         <h1 id='title' className='text-center m-5' style={{width: '100%'}}>
           Generative Fill Model Demo
         </h1>
-        <Container style={{width: '100vh'}}>
+        <Container style={{width: '100vw'}}>
           <InputGroup style={{width: '75%'}} className='m-auto'>
               <FormControl className=''
                 placeholder='Search for an album or artist'
@@ -157,7 +157,7 @@ if (!albumPicked) {return (
           </InputGroup>
         </Container>
         <Container>
-          <Row style={{width: '100vh'}} className='mx-2 row row-cols-4 p-2 justify-content-center'>
+          <Row style={{width: '100vw'}} className='mx-2 row row-cols-4 p-2 justify-content-center'>
             {albums?.map( (album, i) => {
               console.log(album);
               return (
@@ -195,7 +195,7 @@ if (!albumPicked) {return (
           
           <Row>
             <Col>
-              <Card style={{width: '50vh'}} className='mx-auto'>
+              <Card style={{width: '50vw'}} className='mx-auto'>
               <Card.Img id='albumImage' src={albumImage}/>
               <Card.Title className='p-1'>{albumTitle}</Card.Title>
               <Card.Subtitle className='p-1'>{albumArtist}</Card.Subtitle>
@@ -215,13 +215,13 @@ if (!albumPicked) {return (
           
           <Row>
             <Col>
-              <Card style={{width: '50vh'}}>
+              <Card style={{width: '50vw'}}>
               <Card.Img id='albumImage' src={albumImage}/>
               <Card.Title>Original</Card.Title>
             </Card>
             </Col>
             <Col>
-              <Card style={{width: '50vh'}}>
+              <Card style={{width: '50vw'}}>
 
                 <CldImage 
                   width={640}
