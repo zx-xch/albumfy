@@ -140,7 +140,7 @@ if (!albumPicked) {return (
         <Container style={{width: '100vw'}}>
           <InputGroup style={{width: '75%'}} className='m-auto'>
               <FormControl className=''
-                placeholder='Search for an album or artist'
+                placeholder='Search for an album'
                 type='input'
                 onKeyDown={event => {
                   if (event.key == "Enter") {
