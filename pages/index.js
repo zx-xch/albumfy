@@ -157,11 +157,11 @@ if (!albumPicked) {return (
           </InputGroup>
         </Container>
         <Container>
-          <Row style={{width: '100vw'}} className='mx-2 row row-cols-4 p-2 justify-content-center'>
+          <Row style={{width: '100vw'}} className='mx-2 row row-cols-1 p-2 justify-content-center'>
             {albums?.map( (album, i) => {
               console.log(album);
               return (
-                <Card className='m-2' key={'card' + i} >
+                <Card className='m-2 col-lg-3 col-md-4 col-sm-6 col-xs-6' key={'card' + i}  >
               <Card.Img key={'img' + i} src={album.images[0].url}
                 />
               <Card.Body key={'body' + i}>
