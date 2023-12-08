@@ -6,7 +6,7 @@ import Head from 'next/head'
 import "bootstrap/dist/css/bootstrap.min.css"; // Import bootstrap CSS
 import "../styles/Home.module.scss";
 import "../styles/colors.module.scss"
-import download, { data, strFileName, strMimeType } from 'downloadjs'
+import { saveAs } from 'file-saver'
 
 import { Container, InputGroup, FormControl, Button, Row, Card, Image, Col} from 'react-bootstrap'
 
@@ -33,7 +33,10 @@ export default function Home() {
   const [albumPicked, setAlbumPicked] = useState(false)
   const [generated, setGenerated] = useState(false)
 
+  const [wallpaperData, setWallpaperData] = useState();
+
    let imageFile;
+   let wallpaperFile
 
   // Spotify API call
   useEffect(() => {
@@ -52,6 +55,7 @@ export default function Home() {
   
     )
   }, [])
+
 
   // API Search function
 
@@ -86,7 +90,15 @@ export default function Home() {
     setAlbumPicked(true)
   }
 
+  function setLoad() {
+    const ani = document.createElement('span');
+    ani.className = "spinner-border spinner-border-sm p-1"
+    ani.role = "status"
+    document.getElementById('button').appendChild(ani);
+  }
+
   async function handleOnAlbum(event) {
+
     var request = new XMLHttpRequest();
     request.open('GET', albumImage, true);
     request.responseType = 'blob';
@@ -97,7 +109,6 @@ export default function Home() {
           imageFile = e.target.result;
           setUploadData(undefined);
           console.log('DataURL:', imageFile);
-        
         const fileInput = imageFile;
 
     console.log('fileInput', fileInput[0]);
@@ -105,27 +116,53 @@ export default function Home() {
 
     for ( const file of fileInput) {
     formData.append('file', albumImage);
-  }
-  formData.append('upload_preset', 'albumfyUpload');
+    }
+    formData.append('upload_preset', 'albumfyUpload');
 
       const data = await fetch('https://api.cloudinary.com/v1_1/dmgvtj4dc/image/upload', {
     method: 'POST',
     body: formData
-  }).then(r => r.json());
+    }).then(r => r.json());
 
-  setImageSrc(data.secure_url);
-  console.log(data.secure_url)
-  setGenerated(true)
-  setUploadData(data);
-        };
+    var wallRequest = new XMLHttpRequest();
+    wallRequest.open('GET', data.secure_url, true);
+    wallRequest.responseType = 'blob';
+    wallRequest.onload = function() {
+        var wallReader = new FileReader();
+        wallReader.readAsDataURL(request.response);
+        wallReader.onload =  async function(e){
+          wallResult = e.target.result;
+          console.log(wallResult);
+          setWallpaperData(wallResult);
+          
+      }
+    }
+
+    setImageSrc(data.secure_url);
+    console.log(data.secure_url)
+
+
+    setGenerated(true)
+    setUploadData(data);
+    
+
+  };
     };
     request.send();
 
-  }
+    
+
+}
+
+async function downloadImage() {
+  console.log(document.getElementById('wallpaper').src)
+  saveAs(document.getElementById('wallpaper').src, 'AlbumfyWallpaper.jpg') // Put your image URL here.
+}
 
 
 
-if (!albumPicked) {return (
+
+  if (!albumPicked) {return (
     <div>
       <Head>
         <title>Generative Fill Model</title>
@@ -134,13 +171,13 @@ if (!albumPicked) {return (
       </Head>
 
       <main className='align-items-center mx-auto'>
-        <h1 id='title' className='text-center m-5' style={{width: '100%'}}>
+        <h1 id='title' className='text-center m-5' style={{fontSize: '10vm'}}>
           Generative Fill Model Demo
         </h1>
         <Container style={{width: '100vw'}}>
           <InputGroup style={{width: '75%'}} className='m-auto'>
               <FormControl className=''
-                placeholder='Search for an album'
+                placeholder='Search for an artist'
                 type='input'
                 onKeyDown={event => {
                   if (event.key == "Enter") {
@@ -188,18 +225,17 @@ if (!albumPicked) {return (
       </main>
     </div>
   )
-} else if (!generated) {
+  } else if (!generated) {
   return (
     <div className='display-flex align-items-center'>
         <Container>
-          
           <Row>
             <Col>
               <Card style={{width: '50vw'}} className='mx-auto'>
               <Card.Img id='albumImage' src={albumImage}/>
               <Card.Title className='p-1'>{albumTitle}</Card.Title>
               <Card.Subtitle className='p-1'>{albumArtist}</Card.Subtitle>
-              <Button className='p-1' id='button' onClick={ () => {document.getElementById('button').innerText = 'loading'; handleOnAlbum(); }}>
+              <Button className='p-1' id='button' onClick={ () => {document.getElementById('button').innerText = 'Loading...'; setLoad(); handleOnAlbum(); }}>
                 Generate Wallpaper
               </Button>
             </Card>
@@ -208,22 +244,22 @@ if (!albumPicked) {return (
         </Container>
     </div>
   )
-} else {
+  } else {
   return (
     <div className='display-flex align-items-center'>
         <Container>
           
-          <Row>
+          <Row className='row row-cols-2'>
             <Col>
-              <Card style={{width: '50vw'}}>
+              <Card style={{width: '40vw'}}>
               <Card.Img id='albumImage' src={albumImage}/>
               <Card.Title>Original</Card.Title>
             </Card>
             </Col>
             <Col>
-              <Card style={{width: '50vw'}}>
+              <Card style={{width: '30vw'}}>
 
-                <CldImage 
+                <CldImage id={'wallpaper'} 
                   width={640}
                   height={1137}
                   src={imageSrc}
@@ -232,14 +268,15 @@ if (!albumPicked) {return (
               <Card.Title>
                 Wallpaper
               </Card.Title>
-              <Button onClick={() => download(imageSrc, "AlbumfyWallpaper.jpeg", "image/jpeg")}>
+
+                <Button type="button" onClick={() => downloadImage()}>
                 Download wallpaper
-              </Button>
+              </Button> 
+
             </Card>
             </Col>
           </Row>
         </Container>
     </div>
-  )
-}
-}
+  )}
+  }
