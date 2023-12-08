@@ -165,14 +165,14 @@ async function downloadImage() {
   if (!albumPicked) {return (
     <div>
       <Head>
-        <title>Generative Fill Model</title>
+        <title>Albumfy Demo 💿</title>
         <meta name="description" content="" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className='align-items-center mx-auto'>
         <h1 id='title' className='text-center m-5' style={{fontSize: '10vm'}}>
-          Generative Fill Model Demo
+          Albumfy Demo 💿
         </h1>
         <Container style={{width: '100vw'}}>
           <InputGroup style={{width: '75%'}} className='m-auto'>
