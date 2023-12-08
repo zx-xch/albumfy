@@ -10,8 +10,6 @@ import { saveAs } from 'file-saver'
 
 import { Container, InputGroup, FormControl, Button, Row, Card, Image, Col} from 'react-bootstrap'
 
-const cld = new Cloudinary({cloud: {cloudName: 'dmgvtj4dc'}});
-
 const CLIENT_ID = "7356b3679e1141f1af514bb1b5431441"
 const CLIENT_SECRET = "696d3fb2c7294dc89b4a495cd4181825"
 
